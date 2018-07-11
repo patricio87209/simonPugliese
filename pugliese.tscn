@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=1]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://assets/frames/pugliese/piano-001.tex" type="Texture" id=1]
 [ext_resource path="res://assets/frames/pugliese/piano-002.tex" type="Texture" id=2]
@@ -112,9 +112,7 @@ animations = [ {
 
 [node name="pugliese" type="AnimatedSprite"]
 
-transform/pos = Vector2( 809.023, 512.859 )
-transform/scale = Vector2( 0.7, 0.7 )
+position = Vector2( 809.023, 512.859 )
+scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 1 )
 animation = "pugliese"
-
-

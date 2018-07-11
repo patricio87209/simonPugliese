@@ -23,7 +23,7 @@ func _ready():
 func conectarTeclado():
 	for octava in get_node("teclado").get_children():
 		for boton in octava.get_children():
-			boton.connect("apretado", self, "boton_apretado" )
+			boton.connect( "apretado" , self, "boton_apretado" )
 
 func boton_apretado(quien):
 	patronTocado.append( str(quien.get_name()) )
@@ -36,7 +36,7 @@ func boton_apretado(quien):
 				get_node("teclado/sonidos_ui").play("win_level_" + str(get_node("/root/global").subNivelActual))
 				get_node("error/panel/Label").set_text("ganaste!")
 				get_node("error/anim").play("mostrar")
-				yield( get_node("error/anim"), "finished" )
+				yield( get_node("error/anim"), "animation_finished" )
 				if hayMasNiveles():
 					get_node("/root/global").siguienteNivel()
 					pass
@@ -52,7 +52,7 @@ func boton_apretado(quien):
 		deshabilitarInput(true)
 		get_node("teclado/sonidos_ui").play("error")
 		get_node("error/anim").play("mostrar")
-		yield( get_node("error/anim"), "finished" )
+		yield( get_node("error/anim"), "animation_finished" )
 		patronTocado = [] 
 		continuarPatron()
 	
@@ -63,10 +63,10 @@ func checkPatronTocado():
 	return true
 
 func _on_btnEmpezar_pressed():
-	get_node("teclado/sonidos_ui").play("click")
+	#get_node("teclado/sonidos_ui").play("click")
 	currentPosicion = 0
 	get_node("btnEmpezar/anim").play("ocultar")
-	yield(get_node("btnEmpezar/anim"), "finished")
+	yield(get_node("btnEmpezar/anim"), "animation_finished")
 	get_node("timerCortito").start()
 	yield( get_node("timerCortito"), "timeout" )
 	continuarPatron()
@@ -84,8 +84,11 @@ func continuarPatron():
 func deshabilitarInput(booleano):
 	for octava in get_node("teclado").get_children():
 		for boton in octava.get_children():
-			get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb").set_disabled(booleano)
-
+			if(get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb") == null):
+				pass
+			else:
+				get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb").set_disabled(booleano)
+			
 func hayMasNiveles():
 	return cantidadNiveles - 1 > get_node("/root/global").subNivelActual
 	
@@ -101,8 +104,12 @@ func ganarJuego():
 
 func _on_btnEmpezarDeNuevo_pressed():
 	get_node("btnEmpezarDeNuevo/anim").play("ocultar")
-	yield(get_node("btnEmpezarDeNuevo/anim"), "finished")
+	yield(get_node("btnEmpezarDeNuevo/anim"), "animation_finished")
 	get_tree().get_root().get_node("/root/global").empezarJuego()
 
 func animarMusicosOrquesta():
 	get_node("escenario/orquesta").animarMusicos()
+
+
+func _on_anim_animation_started(anim_name):
+	pass # replace with function body

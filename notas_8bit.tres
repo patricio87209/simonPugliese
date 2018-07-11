@@ -1,4 +1,4 @@
-[gd_resource type="SampleLibrary" load_steps=25 format=1]
+[gd_resource type="Resource" load_steps=1 format=2]
 
 [ext_resource path="res://assets/notas/8bit/11.wav" type="Sample" id=1]
 [ext_resource path="res://assets/notas/8bit/23.wav" type="Sample" id=2]

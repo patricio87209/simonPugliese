@@ -8,7 +8,7 @@ const WALK_SPEED = 500
 
 var velocity = Vector2()
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	if (Input.is_action_pressed("ui_left")):
 		velocity.x = -WALK_SPEED
 		velocity.y = 0
@@ -26,14 +26,16 @@ func _fixed_process(delta):
 		velocity.x = 0
 
 	var motion = velocity * delta
-	move(motion)
+	#move_and_collide(motion)
+	var collision_info = move_and_collide(motion)
 	
-	if(is_colliding()):
-		var collider = get_collider()
+	if(collision_info):
+		var collider = collision_info.collider
 		emit_signal("chocando", collider)
 	else:
 		if(motion != Vector2(0,0)):
 			emit_signal("caminando")
 			
 func _ready():
-	set_fixed_process(true)
+	set_physics_process(true)
+

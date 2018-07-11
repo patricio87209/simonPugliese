@@ -1,4 +1,4 @@
-extends SamplePlayer
+extends Node
 
 export var is_playing = false;
 

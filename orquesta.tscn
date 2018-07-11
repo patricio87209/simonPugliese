@@ -1,4 +1,4 @@
-[gd_scene load_steps=303 format=1]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://orquesta.gd" type="Script" id=1]
 [ext_resource path="res://assets/frames/bandoneon/bandoneon-001.tex" type="Texture" id=2]
@@ -302,6 +302,9 @@
 [ext_resource path="res://assets/frames/violin2/violinista-2-099.tex" type="Texture" id=300]
 [ext_resource path="res://assets/frames/violin2/violinista-2-100.tex" type="Texture" id=301]
 
+
+
+
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
@@ -323,20 +326,20 @@ animations = [ {
 
 [node name="orquesta" type="StaticBody2D"]
 
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 
 [node name="bandoneon" type="AnimatedSprite" parent="."]
 
-material/use_parent = true
-transform/pos = Vector2( 433.958, 240.786 )
-transform/scale = Vector2( 0.37, 0.37 )
+use_parent_material = true
+position = Vector2( 433.958, 240.786 )
+scale = Vector2( 0.37, 0.37 )
 frames = SubResource( 1 )
 animation = "bandoneon"
 frame = 28
@@ -344,9 +347,9 @@ playing = true
 
 [node name="violin1" type="AnimatedSprite" parent="."]
 
-material/use_parent = true
-transform/pos = Vector2( 621.69, 261.191 )
-transform/scale = Vector2( 0.4, 0.4 )
+use_parent_material = true
+position = Vector2( 621.69, 261.191 )
+scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "violin1"
 frame = 82
@@ -354,12 +357,10 @@ playing = true
 
 [node name="violin2" type="AnimatedSprite" parent="."]
 
-material/use_parent = true
-transform/pos = Vector2( 824.385, 229.903 )
-transform/scale = Vector2( 0.37, 0.37 )
+use_parent_material = true
+position = Vector2( 824.385, 229.903 )
+scale = Vector2( 0.37, 0.37 )
 frames = SubResource( 1 )
 animation = "violin2"
 frame = 3
 playing = true
-
-
