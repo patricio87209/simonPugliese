@@ -3,7 +3,7 @@ extends Node2D
 signal gane 
 
 func _ready():
-	#get_node("musica").play('intro_la_yumba')
+	get_node("musica/intro_la_yumba").play()
 	pass
 	
 func _on_personaje_chocando(colisionador):

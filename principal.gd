@@ -23,7 +23,11 @@ func _ready():
 func conectarTeclado():
 	for octava in get_node("teclado").get_children():
 		for boton in octava.get_children():
-			boton.connect( "apretado" , self, "boton_apretado" )
+			print(boton)
+			if(boton is AudioStreamPlayer):
+				pass #FIXME
+			else:
+				boton.connect( "apretado" , self, "boton_apretado" )
 
 func boton_apretado(quien):
 	patronTocado.append( str(quien.get_name()) )
@@ -63,7 +67,7 @@ func checkPatronTocado():
 	return true
 
 func _on_btnEmpezar_pressed():
-	#get_node("teclado/sonidos_ui").play("click")
+	get_node("teclado/sonidos_ui/click").play()
 	currentPosicion = 0
 	get_node("btnEmpezar/anim").play("ocultar")
 	yield(get_node("btnEmpezar/anim"), "animation_finished")
@@ -79,16 +83,15 @@ func continuarPatron():
 		var boton = get_node("teclado/"+nombreOctava+"/" + nombreBoton )
 		boton.apretar()
 		yield( boton, "finApretado")
+		print(nombreOctava + "   " + nombreBoton)
 	deshabilitarInput(false)
 	
 func deshabilitarInput(booleano):
 	for octava in get_node("teclado").get_children():
 		for boton in octava.get_children():
-			if(get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb") == null):
-				pass
-			else:
-				get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb").set_disabled(booleano)
-			
+			get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb").set_disabled(booleano)
+			print(get_node("teclado/"+octava.get_name()+"/"+boton.get_name()+"/boton-lb").disabled)
+
 func hayMasNiveles():
 	return cantidadNiveles - 1 > get_node("/root/global").subNivelActual
 	
@@ -109,7 +112,3 @@ func _on_btnEmpezarDeNuevo_pressed():
 
 func animarMusicosOrquesta():
 	get_node("escenario/orquesta").animarMusicos()
-
-
-func _on_anim_animation_started(anim_name):
-	pass # replace with function body

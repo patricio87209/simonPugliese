@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://laberinto.gd" type="Script" id=1]
 [ext_resource path="res://inventario.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/sonidos_ui/collision.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/sonidos_ui/itemCollected.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/sonidos_ui/win.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sonidos_ui/la-yumba-intro.ogg" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -272,6 +273,7 @@ polygon = PoolVector2Array( 268.245, 0.465073, 268.245, 14.0311, 960.111, 11.016
 
 [node name="personaje" type="KinematicBody2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( -6.02933, 4.522 )
 input_pickable = false
 collision_layer = 1
@@ -296,6 +298,7 @@ shape = SubResource( 1 )
 
 [node name="meta" type="KinematicBody2D" parent="." index="3"]
 
+editor/display_folded = true
 position = Vector2( -6.02933, 4.522 )
 input_pickable = false
 collision_layer = 1
@@ -318,6 +321,8 @@ scale = Vector2( 3.35478, 3.5329 )
 shape = SubResource( 1 )
 
 [node name="items" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
 
 [node name="violin" type="Control" parent="items" index="0"]
 
@@ -476,6 +481,8 @@ shape = SubResource( 1 )
 
 [node name="ganaste" type="Node2D" parent="." index="5"]
 
+editor/display_folded = true
+
 [node name="Panel" type="Panel" parent="ganaste" index="0"]
 
 anchor_left = 0.0
@@ -530,6 +537,7 @@ max_lines_visible = -1
 [node name="sonidos_laberinto" type="Node" parent="." index="6"]
 
 pause_mode = 1
+editor/display_folded = true
 script = ExtResource( 10 )
 is_playing = false
 
@@ -594,6 +602,15 @@ area_mask = 1
 [node name="musica" type="Node" parent="." index="7"]
 
 pause_mode = 1
+
+[node name="intro_la_yumba" type="AudioStreamPlayer" parent="musica" index="0"]
+
+stream = ExtResource( 15 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="gane" from="." to="." method="_on_escena_gane"]
 

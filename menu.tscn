@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/sonidos_ui/win.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/sonidos_ui/la-yumba-intro.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/sonidos_ui/click.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/img/logo-Malefico/logo_resized.png" type="Texture" id=4]
 [ext_resource path="res://assets/buttons/jugar_button.png" type="Texture" id=5]
@@ -47,6 +47,7 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [node name="click" type="AudioStreamPlayer" parent="." index="3"]
 
